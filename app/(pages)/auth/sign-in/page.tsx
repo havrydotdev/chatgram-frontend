@@ -2,14 +2,15 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import bg from "@/public/bg.png";
 
-export default function Home() {
+const SignIn = () => {
   const { push } = useRouter();
   const session = useSession();
 
   useEffect(() => {
-    if (session.status === "unauthenticated") {
-      push("/auth/sign-in");
+    if (session.status === "authenticated") {
+      push("/");
     }
   }, [session]);
 
@@ -21,5 +22,7 @@ export default function Home() {
     );
   }
 
-  return <main></main>;
-}
+  return <div className="h-screen background-main"></div>;
+};
+
+export default SignIn;

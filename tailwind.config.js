@@ -8,11 +8,21 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'iceberg-blue': '#8BABD8',
+        'light-green': '#78E378',
+        'navy-grey': '#707991',
+        'red': '#F71735',
+        'rich-black': '#011627',
+        'main': 'url(/public/bg.png),_lightgray_0%_0%_/_60.00000238418579px_60.00000238418579px_repeat'
       },
     },
+    colors: {
+      'iceberg-blue': '#8BABD8',
+        'light-green': '#78E378',
+        'navy-grey': '#707991',
+        'red': '#F71735',
+        'rich-black': '#011627'
+    }
   },
   plugins: [],
 }
