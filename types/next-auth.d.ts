@@ -4,7 +4,7 @@ import NextAuth, { DefaultSession } from "next-auth";
  * @extends {DefaultUser}
  */
 interface IUser extends DefaultUser {
-  // JWT token
+  // User`s id in db
   id: string;
   // User`s email
   email: string;
@@ -12,6 +12,8 @@ interface IUser extends DefaultUser {
   username: string;
   // User`s image (download url)
   image: string | null | undefined;
+  // JWT token
+  jwt_token: string;
 }
 
 declare module "next-auth" {

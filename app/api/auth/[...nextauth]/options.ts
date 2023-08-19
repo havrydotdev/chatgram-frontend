@@ -3,9 +3,11 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const options: NextAuthOptions = {
+  pages: {
+    signIn: "/auth/sign-in",
+  },
   providers: [
     CredentialsProvider({
-      id: "login",
       credentials: {
         email: {
           label: "email",
@@ -19,7 +21,7 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials, req) {
-        if (!credentials?.email || !credentials.password) {
+        if (!credentials?.email || !credentials?.password) {
           throw new Error("invalid_credentials");
         }
 
@@ -28,8 +30,10 @@ export const options: NextAuthOptions = {
           password: string;
         };
 
-        const res = await login({ email: email, password: password });
+        const res = await login({ email, password });
         const user = await res.json();
+
+        console.log(user);
 
         return user;
       },
@@ -39,7 +43,7 @@ export const options: NextAuthOptions = {
     async session({ session, token }) {
       session.user!.email = token.email;
       session.user!.id = token.id;
-      session.user!.image = token.image;
+      session.user!.name = token.name;
       session.user!.username = token.username;
       return session;
     },
@@ -47,7 +51,7 @@ export const options: NextAuthOptions = {
       if (user) {
         token.email = user.email;
         token.id = user.id;
-        token.image = user.image;
+        token.name = user.name;
         token.username = user.username;
       }
       return token;
