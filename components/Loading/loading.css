@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loading {
+    @apply h-screen bg-red w-screen
+}

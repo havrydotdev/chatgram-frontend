@@ -20,8 +20,8 @@ const SignIn = () => {
 
   if (session.status === "loading") {
     return (
-      <div className="mt-[95px] ml-[500px]">
-        <div className="load"></div>
+      <div className='mt-[95px] ml-[500px]'>
+        <div className='load'></div>
       </div>
     );
   }
@@ -42,7 +42,7 @@ const SignIn = () => {
       setPassword("");
       setEmail("");
 
-      const res = await signIn("credentials", {
+      const res = await signIn("login", {
         redirect: false,
         email: form.email,
         password: form.password,
@@ -57,13 +57,13 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex h-screen background-main justify-center items-center">
-      <div className="bg-[#fff] rounded-xl shadow-sm w-[550px] h-[480px] max-sm:mx-[20px]">
-        <div className="sm:mx-[50px] max-sm:mx-[20px] my-[50px]">
-          <h1 className="font-medium text-[42px]">Sign in</h1>
-          <div className="flex flex-col justify-between gap-[15px] mt-[60px]">
+    <div className='flex h-screen background-main justify-center items-center'>
+      <div className='bg-[#fff] rounded-xl shadow-sm w-[550px] h-[480px] max-sm:mx-[20px]'>
+        <div className='sm:mx-[50px] max-sm:mx-[20px] my-[50px]'>
+          <h1 className='font-medium text-[42px]'>Sign in</h1>
+          <div className='flex flex-col justify-between gap-[15px] mt-[60px]'>
             <AuthInput
-              placeholder="Email"
+              placeholder='Email'
               onChange={(e) => {
                 e.preventDefault();
 
@@ -73,26 +73,26 @@ const SignIn = () => {
             />
 
             <AuthInput
-              placeholder="Password"
+              placeholder='Password'
               onChange={(e) => {
                 e.preventDefault();
 
                 setPassword(e.currentTarget.value);
               }}
               value={password}
-              type="password"
+              type='password'
             />
           </div>
 
           <Link
-            href="/auth/sign-up"
-            className="inline-block mt-[7px] text-navy-grey"
+            href='/auth/sign-up'
+            className='inline-block mt-[7px] text-navy-grey'
           >
             Don&apos;t have an account?
           </Link>
 
-          <div className="flex justify-center mt-[40px]">
-            <AuthButton text="Sign In" onClick={onSubmit} />
+          <div className='flex justify-center mt-[40px]'>
+            <AuthButton text='Sign In' onClick={onSubmit} />
           </div>
         </div>
       </div>

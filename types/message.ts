@@ -7,5 +7,5 @@ export interface Message {
 
   chat: number;
 
-  user: number;
+  userId: number;
 }

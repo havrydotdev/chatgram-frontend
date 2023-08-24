@@ -8,6 +8,7 @@ export const options: NextAuthOptions = {
   },
   providers: [
     CredentialsProvider({
+      id: "login",
       credentials: {
         email: {
           label: "email",
@@ -32,8 +33,10 @@ export const options: NextAuthOptions = {
 
         const res = await login({ email, password });
         const user = await res.json();
-
-        console.log(user);
+        console.log({ user });
+        if (!res.ok) {
+          throw new Error("not_exist");
+        }
 
         return user;
       },
@@ -45,6 +48,7 @@ export const options: NextAuthOptions = {
       session.user!.id = token.id;
       session.user!.name = token.name;
       session.user!.username = token.username;
+      session.user!.jwt_token = token.jwt_token;
       return session;
     },
     async jwt({ token, user }) {
@@ -53,6 +57,7 @@ export const options: NextAuthOptions = {
         token.id = user.id;
         token.name = user.name;
         token.username = user.username;
+        token.jwt_token = user.jwt_token;
       }
       return token;
     },
